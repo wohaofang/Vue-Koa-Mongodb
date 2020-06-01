@@ -1,15 +1,25 @@
 <template>
   <div class="home">
-    <img alt="Vue logo" src="../assets/logo.png">
+    <!-- <h1>Vue+Koa+Mongodb 留言板</h1> -->
+    <CommentBox
+    />
   </div>
 </template>
 
 <script>
-// @ is an alias to /src
+import CommentBox from "@/components/CommentBox"
 
 export default {
   name: 'Home',
   components: {
+    CommentBox
   }
 }
 </script>
+
+<style lang="scss">
+ h1{
+    margin-bottom: 20px;
+    text-align: center;
+  }
+</style>

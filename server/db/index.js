@@ -53,6 +53,19 @@ let userSchema = new mongoose.Schema({
     }
   })
   
+// 留言
+let commentSchema = new mongoose.Schema({
+    userId: {
+      type: mongoose.Schema.ObjectId,
+      ref: 'User'
+    },
+    content: String,
+    create_time: {
+      type: String,
+      default: Date.now
+    }
+  })
 
 exports.Checkcode = mongoose.model('Checkcode', checkcodeSchema);
 exports.User = mongoose.model('User', userSchema); 
+exports.Comment = mongoose.model('Comment', commentSchema); 

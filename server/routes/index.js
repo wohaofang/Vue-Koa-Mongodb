@@ -22,5 +22,7 @@ router.post("/api/user/login", controller.user.login) // 登录
 router.post("/api/user/register", controller.user.register) // 注册
 
 
+router.post("/api/comment", controller.comment.addComment) // 添加评论
+
 
 module.exports = router

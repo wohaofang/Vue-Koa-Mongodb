@@ -22,6 +22,11 @@ Vue.use(VueRouter)
       name: 'register',
       component: register
     },
+    {
+      path: '/home',
+      name: 'Home',
+      component: Home
+    },
   {
     path: '/about',
     name: 'About',

@@ -16,3 +16,9 @@ export async function login (params, paramPort = 3000) {
 export async function register (params, paramPort = 3000) {
   return api.post('/api/user/register',params)
 }
+
+  // 添加留言
+export async function comment (params, paramPort = 3000) {
+  return api.post('/api/comment',params)
+}
+

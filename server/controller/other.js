@@ -39,10 +39,10 @@ function makeCapcha() {
     img.drawCircle(rand(0, 100), rand(0, 40), rand(10 , 40), rand(0, 0xffffff));
     //边框
     img.drawRect(0, 0, img.w-1, img.h-1, rand(0, 0xffffff));
-    img.fillRect(rand(0, 100), rand(0, 40), rand(10, 35), rand(10, 35), rand(1, 0xffffff));
+    img.fillRect(0, 0, 100, 40, 0x252632);
+    // img.fillRect(rand(0, 100), rand(0, 40), rand(10, 35), rand(10, 35), rand(0, 0xffffff));
     img.drawLine(rand(0, 100), rand(0, 40), rand(0, 100), rand(0, 40), rand(0, 0xffffff));
     //return img;
- 
     //画曲线
     var w=img.w/2;
     var h=img.h;
@@ -61,7 +61,7 @@ function makeCapcha() {
  
     var p = "ABCDEFGHKMNPQRSTUVWXYZ3456789";
     var str = '';
-    for(var i=0; i<5; i++){
+    for(var i=0; i<4; i++){
         str += p.charAt(Math.random() * p.length |0);
     }
  

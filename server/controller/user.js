@@ -31,6 +31,7 @@ try {
 module.exports = {
     async login(ctx,next){
         let {userId = '', pwd = '' , code = "" ,token} = ctx.request.body;
+        let dToken = token
         try {
             if(userId == '' || pwd == ''){
                 ctx.body = {
@@ -41,7 +42,7 @@ module.exports = {
             }
             
             // 验证码判断
-            let mark = await check_token_code({token,code})
+            let mark = await check_token_code({token:dToken,code})
             if(!mark){
                 ctx.body = {
                     code: 401,
@@ -52,13 +53,16 @@ module.exports = {
             // 判断账号密码
             pwd = sha1(sha1(pwd+DM_ENCODE_STR))
             let res = await User.find({userId,pwd});
-            
+            let token = create_token(userId);
+            res[0].token = token;
+            res[0].save();
+
             ctx.body = {
                 code: 200,
                 msg: "登录成功!",
                 data: {
-                    userId: res[0].userId,
-                  user_name: res[0].user_name,
+                    _id: res[0]._id,
+                  name: res[0].name,
                   avatar: res[0].avatar,
                   token
                 }
@@ -125,12 +129,12 @@ module.exports = {
             let token = create_token(userId);
             let user = new User({userId,name,pwd,avatar,token});
             res = await user.save();
-            if(res.id != null){
+            if(res._id != null){
                 ctx.body = {
                   code: 200,
                   msg: "注册成功!",
                   data: {
-                    userId,
+                    _id: res._id,
                     name,
                     avatar,
                     token,

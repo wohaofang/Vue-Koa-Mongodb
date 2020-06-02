@@ -14,6 +14,7 @@
 3. koa与mongoose的基本使用
 4. jsonwebtoken的使用以及前后台鉴定登录
 
-**注： 本文面对刚学vue或者koa不久或者想了解一个简单的前后台交互的问题的同学，涉及基础。
-感谢 https://github.com/LiChangyi/demo1/blob/master/README.md Vue+Koa+Mongodb 小练习**
+**注： 本文面对刚学vue或者koa不久或者想了解一个简单的前后台交互的问题的同学，涉及基础。**
+
+**感谢 https://github.com/LiChangyi/demo1/blob/master/README.md Vue+Koa+Mongodb 小练习**
 

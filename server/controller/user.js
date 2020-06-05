@@ -10,7 +10,7 @@ const User = require('../db').User;
 
 // 验证 验证码 token 与 code 是否正确
 async function check_token_code({token,code}){
-    console.log(11123123123123,code)
+    // console.log(11123123123123,code)
 try {
     // 验证码转大写
     code = code.toUpperCase();
@@ -155,5 +155,31 @@ module.exports = {
             }
         }
        
+    },
+    // 通过_id 获取用户信息
+    async query(ctx,next){
+      let _id = ctx.query._id;
+      if(_id.length != 24){
+        ctx.body={
+          code: 401,
+          msg: '查询失败，_id错误!'
+        }
+        return
+      }
+      try {
+        let res = await User.findOne({_id},{avatar:true,_id:true,name:true})
+        ctx.body = {
+          code: 200,
+          msg: "查询成功",
+          data: res
+        }
+      } catch(e){
+        console.log(e);
+        ctx.body = {
+          code: 500,
+          msg: '查询失败，服务器异常，请稍后再试!'
+        }
+      }
     }
+
 }

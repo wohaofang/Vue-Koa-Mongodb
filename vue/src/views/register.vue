@@ -174,7 +174,7 @@ export default {
 };
 </script>
 
-<style lang="scss">
+<style lang="scss" scoped>
 .avatar-box {
   flex: 1;
   height: 200px;

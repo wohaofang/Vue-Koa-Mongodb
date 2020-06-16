@@ -35,7 +35,13 @@ export default {
   },
   data(){
     return{
-      commentList:[],
+      commentList:[
+        { 
+          name:'haha',
+          content:123,
+          create_time:'1591345765920'
+        }
+      ],
       page: {
         page: 1,
         size: 10,
@@ -70,7 +76,7 @@ export default {
 }
 </script>
 
-<style lang="scss">
+<style lang="scss" >
  h1{
     margin-bottom: 20px;
     text-align: center;

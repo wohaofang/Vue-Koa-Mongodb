@@ -65,6 +65,7 @@ export default {
         addComment(param).then(res=>{
             console.log(res)
             this.content = ''
+            this.$emit('addList',res)
         })
     }
   }

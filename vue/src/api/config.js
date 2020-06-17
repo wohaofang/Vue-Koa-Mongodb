@@ -17,10 +17,28 @@ import axios from "axios";
 //     })
 //   }
 
+// const instance = axios.create();
+// instance.defaults.headers.post['Content-Type'] = 'application/json';
+
+// // request拦截器，每次发送请求的时候拦截下来
+// instance.interceptors.request.use(
+//   config => {
+//     // 每次发送请求，检查 vuex 中是否有token,如果有放在headers中
+//     if(Vue.prototype.$getSession('token')){
+//       config.headers.Authorization = Vue.prototype.$getSession('token')
+//     }
+//     console.log(123)
+//     return config;
+//   },
+//   err => {
+//     return Promise.reject(err);
+//   }
+// )
+
 class DAxios {
   constructor(config = {}) {
     this.headers = {
-      "content-type": "application/json;charset=UTF-8"
+      "content-type": "application/json;charset=UTF-8",
     };
     this.timeout = 10000;
     this.ipUrl = config.ipUrl;
@@ -40,8 +58,9 @@ class DAxios {
       baseURL,
       headers: {
         // ...commonHeader,
+        "Authorization": Vue.prototype.$getSession('userInfo').token,
         ..._this.headers,
-        ...header
+        ...header,
       },
       timeout: _this.timeout
     })
@@ -67,11 +86,13 @@ class DAxios {
         token: Vue.prototype.$getSession('token')
       },
       baseURL,
-      // headers: {
+      headers: {
+        "Authorization": Vue.prototype.$getSession('userInfo').token
+        // ...haha
       //   // ...commonHeader,
       //   ..._this.headers,
       //   ...header
-      // },
+      },
       timeout: _this.timeout
     })
     .then(({data:{code,data}})=>{

@@ -1,5 +1,4 @@
 import api from '@/api/config.js'
-import axios from "axios";
 
 export async function getResult (params, paramPort = 3000) {
     return api.get('/api/test/haha')

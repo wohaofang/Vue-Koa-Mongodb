@@ -53,6 +53,13 @@ module.exports = {
             // 判断账号密码
             pwd = sha1(sha1(pwd+DM_ENCODE_STR))
             let res = await User.find({userId,pwd});
+            if(res.length == 0){
+              ctx.body = {
+                code: 401,
+                msg: '登录失败，用户名或者密码错误!'
+              }
+              return;
+            }
             let token = create_token(userId);
             res[0].token = token;
             res[0].save();
@@ -71,7 +78,7 @@ module.exports = {
             console.log(e)
             ctx.body = {
                 code: 500,
-                msg: "注册失败，服务器异常!"
+                msg: "登录失败，服务器异常!"
             }
         }
     },
@@ -166,6 +173,7 @@ module.exports = {
         }
         return
       }
+      console.log(_id)
       try {
         let res = await User.findOne({_id},{avatar:true,_id:true,name:true})
         ctx.body = {

@@ -6,6 +6,7 @@ const json = require('koa-json')
 const onerror = require('koa-onerror')
 const bodyparser = require('koa-bodyparser')
 const logger = require('koa-logger')
+const {check_token} = require('./utils/token')
 
 
 // error handler
@@ -25,6 +26,8 @@ app.use(require('koa-static')(__dirname + '/public'))
 
 // 具体参数我们在后面进行解释
 app.use(cors());
+// 添加token 验证中间件
+app.use(check_token);
 
 // logger
 app.use(async (ctx, next) => {

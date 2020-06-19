@@ -35,8 +35,11 @@
         >
         <el-button @click="resetForm('ruleForm')">重置</el-button>
         <el-button type="info" round @click="goRegister">注册</el-button>
+
+
       </el-form-item>
     </el-form>
+    <h1 @click="test"> test </h1>
     </div>
 
     <!-- <el-button @click="showSome" type="primary">showSome</el-button>
@@ -84,6 +87,12 @@ export default {
     };
   },
   methods: {
+    test(){
+      console.log(12344)
+
+      throw new Error("2222222")
+
+    },
     submitForm(formName) {
       this.$refs[formName].validate(valid => {
         if (valid) {
@@ -129,7 +138,7 @@ export default {
     }
   },
   mounted() {
-    this.getCheckcode()
+    // this.getCheckcode()
   }
 };
 </script>

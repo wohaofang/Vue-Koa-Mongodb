@@ -1,0 +1,8 @@
+[auth]
+token=63f366c45f26440e92c85ce88d56c2e426b1b0ce4e7e43efa8b807ff94c76043
+
+[defaults]
+url=http://10.6.6.95:9000/
+org=sentry  
+project=test
+

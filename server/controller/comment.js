@@ -32,7 +32,7 @@ module.exports = {
         try {
             let comment = new Comment({
               userId: _id,
-              content:content1
+              content: content1
             });
             let res = await comment.save();
             if(_id != null){

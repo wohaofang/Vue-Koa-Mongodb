@@ -2,7 +2,9 @@
   <div class="register">
     <div class="box">
       <div class="avatar-box">
-        <img class="avatar-show" :src="formLabelAlign.avatar" alt="上传头像" />
+        <!-- <img class="avatar-show" :src="formLabelAlign.avatar" alt="上传头像" /> -->
+        <!-- <el-avatar :size="50" :src=""> -->
+        <div class="block block1"><el-avatar :size="80" :src="formLabelAlign.avatar" alt="上传头像"></el-avatar></div>
         <label class="upload-img-btn" for="upload-img">上传图片</label>
         <input id="upload-img" type="file" @change="upload_img" />
       </div>
@@ -175,6 +177,10 @@ export default {
 </script>
 
 <style lang="scss">
+.block1{
+  margin: 0 auto;
+  text-align: center;
+}
 .avatar-box {
   flex: 1;
   height: 200px;

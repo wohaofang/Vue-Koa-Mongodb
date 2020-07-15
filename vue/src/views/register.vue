@@ -176,7 +176,7 @@ export default {
 };
 </script>
 
-<style lang="scss">
+<style lang="scss" scoped>
 .block1{
   margin: 0 auto;
   text-align: center;

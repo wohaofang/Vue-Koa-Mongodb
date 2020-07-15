@@ -1,6 +1,6 @@
 <template>
   <div class="comment-com">
-    <p class="comment-com-title">留下点什么吧... <button class="logout" @click="logout">退出登录</button></p>
+    <!-- <p class="comment-com-title">留下点什么吧... <button class="logout" @click="logout">退出登录</button></p> -->
     <div class="wrap">
       <div class="user-info-box">
         <div class="user-avatar-box">
@@ -20,7 +20,7 @@
 </template>
 
 <script>
-import { comment } from "@/api/api";
+import { addComment } from "@/api/api";
 
 export default {
   name: 'commentBox',
@@ -62,9 +62,10 @@ export default {
             content: this.content,
             _id:this.userInfo._id
         }
-        comment(param).then(res=>{
+        addComment(param).then(res=>{
             console.log(res)
             this.content = ''
+            this.$emit('addList',res)
         })
     }
   }

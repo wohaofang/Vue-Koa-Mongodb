@@ -16,15 +16,16 @@ window.Vue = new Vue({
   render: h => h(App)
 }).$mount('#app')
 
-Sentry.init({
-  dsn: 'http://492593cde3dc46cc852c244d5ea96ff7@10.6.6.95:9000/10',
-  integrations: [
-    new Integrations.Vue({Vue, attachProps: true}),
-    new Integrations.RewriteFrames()
-  ],
-  release: 'ha11'
-});
+// Sentry.init({
+//   dsn: 'http://492593cde3dc46cc852c244d5ea96ff7@10.6.6.95:9000/10',
+//   integrations: [
+//     new Integrations.Vue({Vue, attachProps: true}),
+//     new Integrations.RewriteFrames()
+//   ],
+//   release: 'ha11'
+// });
 
-setTimeout(()=>{
-  Sentry.captureException(new Error("八点十分"));  
-},1000)
+console.log("process.env",process.env.release)
+// setTimeout(()=>{
+//   Sentry.captureException(new Error("八点十分"));  
+// },1000)
